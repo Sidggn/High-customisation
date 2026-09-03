@@ -103,6 +103,8 @@ export function Quiz({ answers, index, onAnswer, onNext, onBack }: QuizProps) {
   }
 
   const progress = ((index + (answered ? 1 : 0)) / total) * 100
+  // Keep the final six questions focused on lifestyle and goals without imagery.
+  const showOptionImages = index < 12
 
   return (
     <div className="mx-auto flex min-h-dvh w-full max-w-2xl flex-col px-5 py-6">
@@ -171,7 +173,7 @@ export function Quiz({ answers, index, onAnswer, onNext, onBack }: QuizProps) {
                     : 'border-border bg-card text-foreground hover:border-primary/40 hover:bg-secondary',
                 )}
               >
-                {issueImages[opt.value] && (
+                {showOptionImages && issueImages[opt.value] && (
                   <Image
                     src={issueImages[opt.value]}
                     alt=""
