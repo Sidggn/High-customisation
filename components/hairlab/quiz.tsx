@@ -1,66 +1,11 @@
 'use client'
 
-import Image from 'next/image'
 import { ArrowLeft, ArrowRight, Check } from 'lucide-react'
 import { useMemo } from 'react'
 import { questions } from '@/lib/questions'
 import type { Answers } from '@/lib/types'
 import { cn } from '@/lib/utils'
 import { Wordmark } from './wordmark'
-
-const issueImages: Record<string, string> = {
-  // One neutral scalp-to-strand crop avoids gendered silhouettes or bodies.
-  straight: '/hair-issues/neutral-hair.png',
-  wavy: '/hair-issues/neutral-hair.png',
-  curly: '/hair-issues/neutral-hair.png',
-  coily: '/hair-issues/neutral-hair.png',
-  fine: '/hair-issues/neutral-hair.png',
-  medium: '/hair-issues/neutral-hair.png',
-  thick: '/hair-issues/neutral-hair.png',
-  low: '/hair-issues/neutral-hair.png',
-  high: '/hair-issues/neutral-hair.png',
-  dry: '/hair-issues/neutral-hair.png',
-  balanced: '/hair-issues/neutral-hair.png',
-  oily: '/hair-issues/neutral-hair.png',
-  veryOily: '/hair-issues/neutral-hair.png',
-  never: '/hair-issues/neutral-hair.png',
-  occasionally: '/hair-issues/neutral-hair.png',
-  frequently: '/hair-issues/neutral-hair.png',
-  almostAlways: '/hair-issues/neutral-hair.png',
-  minimal: '/hair-issues/neutral-hair.png',
-  mild: '/hair-issues/neutral-hair.png',
-  moderate: '/hair-issues/neutral-hair.png',
-  significant: '/hair-issues/neutral-hair.png',
-  notAtAll: '/hair-issues/neutral-hair.png',
-  slightly: '/hair-issues/neutral-hair.png',
-  moderately: '/hair-issues/neutral-hair.png',
-  significantly: '/hair-issues/neutral-hair.png',
-  veryLittle: '/hair-issues/neutral-hair.png',
-  sometimes: '/hair-issues/neutral-hair.png',
-  often: '/hair-issues/neutral-hair.png',
-  daily: '/hair-issues/neutral-hair.png',
-  soft: '/hair-issues/neutral-hair.png',
-  slightlyDry: '/hair-issues/neutral-hair.png',
-  quiteDry: '/hair-issues/neutral-hair.png',
-  extremelyDry: '/hair-issues/neutral-hair.png',
-  healthy: '/hair-issues/neutral-hair.png',
-  slight: '/hair-issues/neutral-hair.png',
-  noticeable: '/hair-issues/neutral-hair.png',
-  severe: '/hair-issues/neutral-hair.png',
-  rarely: '/hair-issues/neutral-hair.png',
-  breakage: '/hair-issues/neutral-hair.png',
-  hairFall: '/hair-issues/neutral-hair.png',
-  dandruff: '/hair-issues/neutral-hair.png',
-  dryness: '/hair-issues/neutral-hair.png',
-  frizz: '/hair-issues/neutral-hair.png',
-  damage: '/hair-issues/neutral-hair.png',
-  thinning: '/hair-issues/neutral-hair.png',
-  dullness: '/hair-issues/neutral-hair.png',
-  greying: '/hair-issues/neutral-hair.png',
-  oilyScalp: '/hair-issues/neutral-hair.png',
-  dryScalp: '/hair-issues/neutral-hair.png',
-  weakness: '/hair-issues/neutral-hair.png',
-}
 
 interface QuizProps {
   answers: Answers
@@ -79,12 +24,8 @@ export function Quiz({ answers, index, onAnswer, onNext, onBack }: QuizProps) {
     if (question.type === 'multi') {
       return Array.isArray(current) && current.length > 0
     }
-    if (question.id === 'chemical' && current === 'other') return false
-    if (question.id === 'chemical' && typeof current === 'string' && current.startsWith('other:')) {
-      return current.slice('other:'.length).trim().length > 0
-    }
     return typeof current === 'string' && current.length > 0
-  }, [current, question.id, question.type])
+  }, [current, question.type])
 
   function toggleMulti(value: string) {
     const selected = Array.isArray(current) ? [...current] : []
@@ -103,13 +44,14 @@ export function Quiz({ answers, index, onAnswer, onNext, onBack }: QuizProps) {
   }
 
   const progress = ((index + (answered ? 1 : 0)) / total) * 100
-  // Keep the final six questions focused on lifestyle and goals without imagery.
-  const showOptionImages = index < 10
 
   return (
     <div className="mx-auto flex min-h-dvh w-full max-w-2xl flex-col px-5 py-6">
       <header className="flex items-center justify-between">
         <Wordmark />
+        <span className="text-xs tabular-nums tracking-wide text-muted-foreground">
+          {question.section}
+        </span>
       </header>
 
       {/* progress */}
@@ -133,11 +75,6 @@ export function Quiz({ answers, index, onAnswer, onNext, onBack }: QuizProps) {
 
       {/* question */}
       <main key={question.id} className="hl-fade-up flex flex-1 flex-col pt-8">
-        <div className="mb-5 flex items-center justify-center">
-          <span className="rounded-full bg-secondary px-4 py-1.5 text-sm font-bold tracking-wide text-primary">
-            {question.section}
-          </span>
-        </div>
         <h1 className="text-balance font-serif text-2xl leading-tight tracking-tight text-foreground sm:text-3xl">
           {question.title}
         </h1>
@@ -173,19 +110,7 @@ export function Quiz({ answers, index, onAnswer, onNext, onBack }: QuizProps) {
                     : 'border-border bg-card text-foreground hover:border-primary/40 hover:bg-secondary',
                 )}
               >
-                {showOptionImages && issueImages[opt.value] && (
-                  <Image
-                    src={issueImages[opt.value]}
-                    alt=""
-                    width={52}
-                    height={52}
-                    className={cn(
-                      'order-first size-12 shrink-0 rounded-full object-cover transition-transform duration-300',
-                      isSelected && 'scale-110 ring-2 ring-primary ring-offset-2 ring-offset-card',
-                    )}
-                  />
-                )}
-                <span className="flex-1 font-medium">{opt.label}</span>
+                <span className="font-medium">{opt.label}</span>
                 <span
                   className={cn(
                     'flex size-5 shrink-0 items-center justify-center rounded-full border transition-colors',
@@ -200,24 +125,6 @@ export function Quiz({ answers, index, onAnswer, onNext, onBack }: QuizProps) {
             )
           })}
         </div>
-
-        {question.id === 'chemical' && current === 'other' ||
-          question.id === 'chemical' && typeof current === 'string' && current.startsWith('other:') ? (
-          <div className="mt-4">
-            <label htmlFor="specific-treatment" className="sr-only">
-              Specific hair treatment
-            </label>
-            <input
-              id="specific-treatment"
-              type="text"
-              value={typeof current === 'string' && current.startsWith('other:') ? current.slice('other:'.length) : ''}
-              onChange={(event) => onAnswer(question.id, `other:${event.target.value}`)}
-              placeholder="Write the specific treatment"
-              autoFocus
-              className="h-12 w-full rounded-xl border border-primary/50 bg-card px-4 text-base text-foreground outline-none placeholder:text-muted-foreground focus-visible:ring-3 focus-visible:ring-ring/40"
-            />
-          </div>
-        ) : null}
       </main>
 
       {/* nav */}
