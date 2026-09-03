@@ -125,12 +125,14 @@ export const questions: Question[] = [
     id: 'breakage',
     section: 'Condition',
     title: 'How often do you get split ends or breakage?',
-    type: 'single',
+    helper: 'choose upto 3',
+    type: 'multi',
     options: [
       { value: 'rarely', label: 'Rarely' },
       { value: 'occasionally', label: 'Occasionally' },
       { value: 'frequently', label: 'Frequently' },
       { value: 'veryFrequently', label: 'Very frequently' },
+       { value: 'No Issues', label: 'No issues' },
     ],
   },
   {
@@ -138,12 +140,20 @@ export const questions: Question[] = [
   section: 'Lifestyle',
   title: 'Any chemical treatments in your hair lately?',
   type: 'single',
+
   options: [
     { value: 'none', label: 'No treatments' },
     { value: 'colour', label: 'Hair colour' },
     { value: 'smoothening', label: 'Smoothening / rebonding' },
     { value: 'bleach', label: 'Bleach / highlights' },
     { value: 'multiple', label: 'Multiple treatments' },
+
+    {
+      value: 'other',
+      label: 'Other',
+      allowText: true,
+      placeholder: 'Mention your specific treatment',
+    },
   ],
 },
   {
