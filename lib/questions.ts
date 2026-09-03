@@ -146,14 +146,6 @@ export const questions: Question[] = [
     { value: 'multiple', label: 'Multiple treatments' },
   ],
 },
-
-{
-  id: 'chemicalSpecific',
-  section: 'Lifestyle',
-  title: 'Mention your specific treatments',
-  type: 'text',
-  placeholder: 'Type your treatment(s) here...',
-},
   {
     id: 'heat',
     section: 'Lifestyle',
