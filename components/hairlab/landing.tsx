@@ -16,7 +16,7 @@ export function Landing({ onStart }: { onStart: () => void }) {
       <header className="flex items-center justify-between">
         <Wordmark />
         <span className="hidden text-xs tracking-[0.18em] text-muted-foreground sm:block">
-          PERSONALIZED HAIRCARE
+          CUSTOMISED HAIRCARE
         </span>
       </header>
 
@@ -28,7 +28,7 @@ export function Landing({ onStart }: { onStart: () => void }) {
           </span>
 
           <h1 className="mt-5 text-balance font-serif text-4xl leading-[1.05] tracking-tight text-foreground sm:text-5xl">
-            Discover your personalized haircare ritual.
+            Discover your customised haircare ritual.
           </h1>
 
           <p className="mt-4 max-w-md text-pretty leading-relaxed text-muted-foreground">
