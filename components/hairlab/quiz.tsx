@@ -53,9 +53,6 @@ export function Quiz({ answers, index, onAnswer, onNext, onBack }: QuizProps) {
     <div className="mx-auto flex min-h-dvh w-full max-w-2xl flex-col px-5 py-6">
       <header className="flex items-center justify-between">
         <Wordmark />
-        <span className="text-xs tabular-nums tracking-wide text-muted-foreground">
-          {question.section}
-        </span>
       </header>
 
       {/* progress */}
@@ -79,6 +76,11 @@ export function Quiz({ answers, index, onAnswer, onNext, onBack }: QuizProps) {
 
       {/* question */}
       <main key={question.id} className="hl-fade-up flex flex-1 flex-col pt-8">
+        <div className="mb-5 flex items-center justify-center">
+          <span className="rounded-full bg-secondary px-4 py-1.5 text-sm font-bold tracking-wide text-primary">
+            {question.section}
+          </span>
+        </div>
         <h1 className="text-balance font-serif text-2xl leading-tight tracking-tight text-foreground sm:text-3xl">
           {question.title}
         </h1>
