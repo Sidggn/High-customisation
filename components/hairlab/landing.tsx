@@ -47,13 +47,13 @@ export function Landing({ onStart }: { onStart: () => void }) {
 
           <ul className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted-foreground">
             <li className="flex items-center gap-1.5">
-              <ListChecks className="size-4 text-primary" /> 18 questions
+              <ListChecks className="size-4 text-primary" /> 21 questions
             </li>
             <li className="flex items-center gap-1.5">
-              <Clock className="size-4 text-primary" /> 2–3 minutes
+              <Clock className="size-4 text-primary" /> 3-5 minutes
             </li>
             <li className="flex items-center gap-1.5">
-              <Sparkles className="size-4 text-primary" /> Personalized results
+              <Sparkles className="size-4 text-primary" /> Customised results
             </li>
           </ul>
         </section>
