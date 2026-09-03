@@ -134,18 +134,26 @@ export const questions: Question[] = [
     ],
   },
   {
-    id: 'chemical',
-    section: 'Lifestyle',
-    title: 'Any chemical treatments in your hair lately?',
-    type: 'single',
-    options: [
-      { value: 'none', label: 'No treatments' },
-      { value: 'colour', label: 'Hair colour' },
-      { value: 'smoothening', label: 'Smoothening / rebonding' },
-      { value: 'bleach', label: 'Bleach / highlights' },
-      { value: 'multiple', label: 'Multiple treatments' },
-    ],
-  },
+  id: 'chemical',
+  section: 'Lifestyle',
+  title: 'Any chemical treatments in your hair lately?',
+  type: 'single',
+  options: [
+    { value: 'none', label: 'No treatments' },
+    { value: 'colour', label: 'Hair colour' },
+    { value: 'smoothening', label: 'Smoothening / rebonding' },
+    { value: 'bleach', label: 'Bleach / highlights' },
+    { value: 'multiple', label: 'Multiple treatments' },
+  ],
+},
+
+{
+  id: 'chemicalSpecific',
+  section: 'Lifestyle',
+  title: 'Mention your specific treatments',
+  type: 'text',
+  placeholder: 'Type your treatment(s) here...',
+},
   {
     id: 'heat',
     section: 'Lifestyle',
@@ -174,7 +182,8 @@ export const questions: Question[] = [
     id: 'primaryConcern',
     section: 'Goals',
     title: 'Which concern matters most to you right now?',
-    type: 'single',
+     helper: 'Choose up to 6',
+    type: 'multi',
     options: [
       { value: 'hairFall', label: 'Hair fall' },
       { value: 'dandruff', label: 'Dandruff / scalp' },
@@ -190,7 +199,7 @@ export const questions: Question[] = [
     id: 'secondaryConcerns',
     section: 'Goals',
     title: 'What else should your routine keep an eye on?',
-    helper: 'Choose up to 4',
+    helper: 'Choose up to 6',
     type: 'multi',
     maxSelect: 4,
     options: [
