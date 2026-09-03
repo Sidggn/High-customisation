@@ -3,6 +3,43 @@ import type { Question } from './types'
 // 18 original-wording questions grouped into sections.
 export const questions: Question[] = [
   {
+    id: 'age',
+    section: 'Demographics',
+    title: 'What is your age?',
+    type: 'single',
+    options: [
+      { value: 'under18', label: 'Under 18' },
+      { value: '18to24', label: '18–24' },
+      { value: '25to34', label: '25–34' },
+      { value: '35to44', label: '35–44' },
+      { value: '45to54', label: '45–54' },
+      { value: '55plus', label: '55 and above' },
+    ],
+  },
+  {
+    id: 'gender',
+    section: 'Demographics',
+    title: 'What is your gender?',
+    type: 'single',
+    options: [
+      { value: 'female', label: 'Female' },
+      { value: 'male', label: 'Male' },
+      { value: 'preferNotToSay', label: 'Prefer not to say' },
+    ],
+  },
+  {
+    id: 'waterType',
+    section: 'Demographics',
+    title: 'What type of water do you use for washing your hair?',
+    type: 'single',
+    options: [
+      { value: 'soft', label: 'Soft water' },
+      { value: 'hard', label: 'Hard water' },
+      { value: 'RO', label: 'RO / filtered water' },
+      { value: 'unsure', label: 'Not sure' },
+    ],
+  },
+  {
     id: 'texture',
     section: 'Hair basics',
     title: 'What best describes your natural hair texture?',
@@ -132,30 +169,29 @@ export const questions: Question[] = [
       { value: 'occasionally', label: 'Occasionally' },
       { value: 'frequently', label: 'Frequently' },
       { value: 'veryFrequently', label: 'Very frequently' },
-       { value: 'No Issues', label: 'No issues' },
+      { value: 'noIssues', label: 'No issues' },
     ],
   },
   {
-  id: 'chemical',
-  section: 'Lifestyle',
-  title: 'Any chemical treatments in your hair lately?',
-  type: 'single',
+    id: 'chemical',
+    section: 'Lifestyle',
+    title: 'Any chemical treatments in your hair lately?',
+    type: 'single',
+    options: [
+      { value: 'none', label: 'No treatments' },
+      { value: 'colour', label: 'Hair colour' },
+      { value: 'smoothening', label: 'Smoothening / rebonding' },
+      { value: 'bleach', label: 'Bleach / highlights' },
+      { value: 'multiple', label: 'Multiple treatments' },
 
-  options: [
-    { value: 'none', label: 'No treatments' },
-    { value: 'colour', label: 'Hair colour' },
-    { value: 'smoothening', label: 'Smoothening / rebonding' },
-    { value: 'bleach', label: 'Bleach / highlights' },
-    { value: 'multiple', label: 'Multiple treatments' },
-
-    {
-      value: 'other',
-      label: 'Other',
-      allowText: true,
-      placeholder: 'Mention your specific treatment',
-    },
-  ],
-},
+      {
+        value: 'other',
+        label: 'Other',
+        allowText: true,
+        placeholder: 'Mention your specific treatment',
+      },
+    ],
+  },
   {
     id: 'heat',
     section: 'Lifestyle',
@@ -184,7 +220,7 @@ export const questions: Question[] = [
     id: 'primaryConcern',
     section: 'Goals',
     title: 'Which concern matters most to you right now?',
-     helper: 'Choose up to 6',
+    helper: 'Choose up to 6',
     type: 'multi',
     options: [
       { value: 'hairFall', label: 'Hair fall' },
