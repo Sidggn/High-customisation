@@ -201,9 +201,9 @@ export const questions: Question[] = [
     id: 'secondaryConcerns',
     section: 'Goals',
     title: 'What else should your routine keep an eye on?',
-    helper: 'Choose up to 6',
+    helper: 'Choose up to 8',
     type: 'multi',
-    maxSelect: 4,
+    maxSelect: 8,
     options: [
       { value: 'hairFall', label: 'Hair fall' },
       { value: 'thinning', label: 'Thinning' },
