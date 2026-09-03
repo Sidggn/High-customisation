@@ -24,8 +24,12 @@ export function Quiz({ answers, index, onAnswer, onNext, onBack }: QuizProps) {
     if (question.type === 'multi') {
       return Array.isArray(current) && current.length > 0
     }
+    if (question.id === 'chemical' && current === 'other') return false
+    if (question.id === 'chemical' && typeof current === 'string' && current.startsWith('other:')) {
+      return current.slice('other:'.length).trim().length > 0
+    }
     return typeof current === 'string' && current.length > 0
-  }, [current, question.type])
+  }, [current, question.id, question.type])
 
   function toggleMulti(value: string) {
     const selected = Array.isArray(current) ? [...current] : []
@@ -125,6 +129,24 @@ export function Quiz({ answers, index, onAnswer, onNext, onBack }: QuizProps) {
             )
           })}
         </div>
+
+        {question.id === 'chemical' && current === 'other' ||
+          question.id === 'chemical' && typeof current === 'string' && current.startsWith('other:') ? (
+          <div className="mt-4">
+            <label htmlFor="specific-treatment" className="sr-only">
+              Specific hair treatment
+            </label>
+            <input
+              id="specific-treatment"
+              type="text"
+              value={typeof current === 'string' && current.startsWith('other:') ? current.slice('other:'.length) : ''}
+              onChange={(event) => onAnswer(question.id, `other:${event.target.value}`)}
+              placeholder="Write the specific treatment"
+              autoFocus
+              className="h-12 w-full rounded-xl border border-primary/50 bg-card px-4 text-base text-foreground outline-none placeholder:text-muted-foreground focus-visible:ring-3 focus-visible:ring-ring/40"
+            />
+          </div>
+        ) : null}
       </main>
 
       {/* nav */}
