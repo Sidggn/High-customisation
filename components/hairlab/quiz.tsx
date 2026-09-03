@@ -1,11 +1,24 @@
 'use client'
 
+import Image from 'next/image'
 import { ArrowLeft, ArrowRight, Check } from 'lucide-react'
 import { useMemo } from 'react'
 import { questions } from '@/lib/questions'
 import type { Answers } from '@/lib/types'
 import { cn } from '@/lib/utils'
 import { Wordmark } from './wordmark'
+
+const issueImages: Record<string, string> = {
+  hairFall: '/hair-issues/hair-fall.png',
+  dandruff: '/hair-issues/dandruff.png',
+  dryness: '/hair-issues/dryness.png',
+  frizz: '/hair-issues/frizz.png',
+  damage: '/hair-issues/damage.png',
+  breakage: '/hair-issues/damage.png',
+  thinning: '/hair-issues/thinning.png',
+  dullness: '/hair-issues/dullness.png',
+  greying: '/hair-issues/greying.png',
+}
 
 interface QuizProps {
   answers: Answers
@@ -116,7 +129,19 @@ export function Quiz({ answers, index, onAnswer, onNext, onBack }: QuizProps) {
                     : 'border-border bg-card text-foreground hover:border-primary/40 hover:bg-secondary',
                 )}
               >
-                <span className="font-medium">{opt.label}</span>
+                {issueImages[opt.value] && (
+                  <Image
+                    src={issueImages[opt.value]}
+                    alt=""
+                    width={52}
+                    height={52}
+                    className={cn(
+                      'order-first size-12 shrink-0 rounded-full object-cover transition-transform duration-300',
+                      isSelected && 'scale-110 ring-2 ring-primary ring-offset-2 ring-offset-card',
+                    )}
+                  />
+                )}
+                <span className="flex-1 font-medium">{opt.label}</span>
                 <span
                   className={cn(
                     'flex size-5 shrink-0 items-center justify-center rounded-full border transition-colors',
