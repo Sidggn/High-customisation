@@ -32,7 +32,7 @@ export function Landing({ onStart }: { onStart: () => void }) {
           </h1>
 
           <p className="mt-4 max-w-md text-pretty leading-relaxed text-muted-foreground">
-            We'll ask you about your hair history, lifestyle, environment, and goals in detail so we can build a routine specifically around you — this takes a few minutes
+            We'll ask you about your hair history, lifestyle, environment, and goals in detail so we can build a routine specifically around you
           </p>
 
           <button

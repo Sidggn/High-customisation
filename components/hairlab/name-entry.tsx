@@ -32,10 +32,10 @@ export function NameEntry({ initialName, onBack, onContinue }: NameEntryProps) {
 
       <main className="hl-fade-up flex flex-1 flex-col justify-center">
         <p className="text-xs tracking-[0.18em] text-primary">
-          LET&apos;S PERSONALIZE THIS
+          LET&apos;S CUSTOMISE THIS
         </p>
         <h1 className="mt-3 text-balance font-serif text-3xl leading-tight tracking-tight text-foreground sm:text-4xl">
-          What should we call your personalized routine?
+          What should we call you customise routine?
         </h1>
         <p className="mt-3 leading-relaxed text-muted-foreground">
           We&apos;ll use your first name on your custom formula. You can leave this
