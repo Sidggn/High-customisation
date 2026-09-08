@@ -32,8 +32,7 @@ export function Landing({ onStart }: { onStart: () => void }) {
           </h1>
 
           <p className="mt-4 max-w-md text-pretty leading-relaxed text-muted-foreground">
-            Answer a few questions about your hair, scalp and lifestyle. We&apos;ll
-            create a routine designed around your unique hair profile.
+            We'll ask you about your hair history, lifestyle, environment, and goals in detail so we can build a routine specifically around you — this takes a few minutes
           </p>
 
           <button
@@ -50,7 +49,7 @@ export function Landing({ onStart }: { onStart: () => void }) {
               <ListChecks className="size-4 text-primary" /> 21 questions
             </li>
             <li className="flex items-center gap-1.5">
-              <Clock className="size-4 text-primary" /> 3-5 minutes
+              <Clock className="size-4 text-primary" /> 7-8 minutes
             </li>
             <li className="flex items-center gap-1.5">
               <Sparkles className="size-4 text-primary" /> Customised results
