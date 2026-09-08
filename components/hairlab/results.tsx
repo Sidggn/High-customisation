@@ -124,7 +124,7 @@ export function Results({
       <section ref={routineRef} className="mt-12 scroll-mt-6">
         <div className="mb-5 flex items-baseline justify-between">
           <h2 className="font-serif text-2xl tracking-tight text-foreground">
-            Your personalized routine
+            Your customise routine
           </h2>
           <span className="text-xs tracking-[0.18em] text-muted-foreground">
             3 STEPS
